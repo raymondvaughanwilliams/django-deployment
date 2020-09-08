@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+DJANGO
+        </title>
+        <link rel="stylesheet" href='{% static "css/mystyle.css" %}'>
+        <script src='https://meet.jit.si/external_api.js'></script>
+        <script>
+            // $(document).ready(function(){
+                const domain ="meet.jit.si";
+                const options = {
+                    roomName : "JitsiMeetAPIExample",
+                    width:700,
+                    height:700,
+                    parentNode: document.querySelector('#meet')
+                }
+                const api = new JitsiMeetExternalAPI(domain, options);
+
+            // });
+        </script>
+    </head>
+    <body>
+       <h1> Hi Welcome </h1>
+       <h2>Here are your access records:</h2>
+
+
+    <div class="djangtwo">
+        {% if access_records %}
+            <table>
+                <thead>
+                    <th>Site Name</th>
+                    <th>Date Accessed</th>
+                </thead>
+
+            {% for acc in access_records %}
+                <tr>
+                    <td>              {{ acc.name }}           </td>
+                    <td>              {{ acc.date }}           </td>
+                </tr>
+            {% endfor %}    
+            </table>
+        {% else %}
+        <p>No records Found!!!</p>
+        {% endif %}
+    </div>
+    <h1> MY Jitsi Meeting</h1>
+
+    <div id ="meet">
+        meeting
+    </div>
+
+
+
+    </body>
+</html>
